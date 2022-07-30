@@ -5,8 +5,7 @@ import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.Test;
 
 
-
-public class UserRegister extends TestBase {
+public class UserRegisterTest extends TestBase {
     CredConfig config = ConfigFactory.create(CredConfig.class);
     String password = config.password();
 
@@ -22,14 +21,6 @@ public class UserRegister extends TestBase {
                 .setConfirmUserPassword(password)
                 .setUserRegister()
                 .checkResult();
-
-
-
-
-
-
-
-
 
 
     }

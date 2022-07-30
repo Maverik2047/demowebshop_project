@@ -57,7 +57,8 @@ public class RegistrationPage {
         userRegister.click();
         return this;
     }
-    public void checkResult(){
+
+    public void checkResult() {
         $(".result").shouldHave(text("Your registration completed"));
 
     }
