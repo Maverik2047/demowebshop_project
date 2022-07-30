@@ -2,6 +2,8 @@ package demowebshop;
 
 import config.CredConfig;
 import org.aeonbits.owner.ConfigFactory;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 
@@ -11,6 +13,8 @@ public class UserRegisterTest extends TestBase {
 
 
     @Test
+    @Tag("demowebshop")
+    @DisplayName("User registration UI test")
     void userRegistrationTest() {
         registrationPage.openPage()
                 .setUserGender()
