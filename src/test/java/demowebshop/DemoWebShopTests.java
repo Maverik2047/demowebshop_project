@@ -62,6 +62,7 @@ public class DemoWebShopTests extends TestBase {
     @Tag("demowebshop3")
     @DisplayName("Successfully authorized user API+UI test")
     void userAuthTest() {
+        String cookieName = "NOPCOMMERCE.AUTH";
         String authCookieValue = given()
                 .contentType("application/x-www-form-urlencoded; charset=UTF-8")
                 .formParam("Email", email)
@@ -73,10 +74,10 @@ public class DemoWebShopTests extends TestBase {
                 .log().all()
                 .statusCode(302)
                 .extract()
-                .cookie("NOPCOMMERCE.AUTH");
+                .cookie(cookieName);
 
         open("/login");
-        Cookie authCookie = new Cookie("NOPCOMMERCE.AUTH", authCookieValue);
+        Cookie authCookie = new Cookie(cookieName, authCookieValue);
         getWebDriver().manage().addCookie(authCookie);
         open("");
         $(".account").shouldHave(text(email));
@@ -87,7 +88,7 @@ public class DemoWebShopTests extends TestBase {
     @Tag("demowebshop4")
     @DisplayName("Edit user account API+UI lambda step tests")
     void userAccountEditTest() {
-
+        String cookieName = "NOPCOMMERCE.AUTH";
         step("Open registered user account through API", () -> {
             String authCookieValue = given()
                     .contentType("application/x-www-form-urlencoded; charset=UTF-8")
@@ -100,19 +101,19 @@ public class DemoWebShopTests extends TestBase {
                     .log().all()
                     .statusCode(302)
                     .extract()
-                    .cookie("NOPCOMMERCE.AUTH");
+                    .cookie(cookieName);
             step("Open any content to set up cookie", () ->
                     open("/login"));
             step("Set up cookie to browser", () ->
                     getWebDriver().manage().addCookie(
-                            new Cookie("NOPCOMMERCE.AUTH", authCookieValue)));
+                            new Cookie(cookieName, authCookieValue)));
         });
         step("Open user info page", () ->
                 open("/customer/info"));
         step("Edit user first name", () ->
-                $("#FirstName").setValue("Jason Born"));
+                $("#FirstName").setValue("Alex Malkovich"));
         step("Edit user last name", () ->
-                $("#LastName").setValue("Vladovich"));
+                $("#LastName").setValue("Ferher"));
         step("Save details", () ->
                 $("[name=save-info-button]").click());
         step("Open user addresses page", () ->
@@ -122,7 +123,7 @@ public class DemoWebShopTests extends TestBase {
         step("Set first name", () ->
                 $("#Address_FirstName").setValue("Jason Born"));
         step("Set last name", () ->
-                $("#Address_LastName").setValue("Vladovich"));
+                $("#Address_LastName").setValue("Smith"));
         step("Set email", () ->
                 $("#Address_Email").setValue(email));
         step("Set country", () ->
@@ -134,7 +135,7 @@ public class DemoWebShopTests extends TestBase {
         step("Set zip code", () ->
                 $("#Address_ZipPostalCode").setValue("567243"));
         step("Set phone number", () ->
-                $("#Address_PhoneNumber").setValue("103456876"));
+                $("#Address_PhoneNumber").setValue("1034568760"));
         step("Save details", () ->
                 $(".button-1.save-address-button").click());
         step("Check account info updated", () ->

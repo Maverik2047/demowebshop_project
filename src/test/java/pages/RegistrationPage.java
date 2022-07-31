@@ -17,6 +17,7 @@ public class RegistrationPage {
             userRegister = $("#register-button");
 
 
+
     public RegistrationPage openPage() {
         open("/register");
         return this;
