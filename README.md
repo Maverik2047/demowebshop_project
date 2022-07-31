@@ -10,7 +10,7 @@
 
 ## 🎱 Jenkins job
 
-<a target="_blank" href="https://jenkins.autotests.cloud/job/Jenkins_demoWebShop_tests/">
+<a target="_blank" href="https://jenkins.autotests.cloud/job/Jenkins_demoWebShop_tests/2/">
 jenkins.autotests.cloud/job/%s</a>
 
 ## 🛒 Project for DemoWebShop
